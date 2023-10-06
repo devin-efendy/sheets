@@ -13,7 +13,7 @@ virtualenv --python=python3.10 .budgetenv
 Activate virtual environment
 
 ```bash
-source .transitenv/bin/activate
+source .budgetenv/bin/activate
 ```
 
 Install Dependencies

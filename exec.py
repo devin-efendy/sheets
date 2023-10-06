@@ -23,6 +23,12 @@ SUB_CATEGORY_IDX = 1
 AMOUNT_IDX = 2
 
 
+def write_to_file(content: str):
+    f = open("out/sankey.txt", 'w')
+    f.write(content)
+    f.close()
+
+
 def get_creds():
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
@@ -91,10 +97,12 @@ def main():
                 output_str += f"{category} [{amount:.2f}] {sub}\n"
             output_str += "\n"
 
-            # top_level_str += f"Income [{total:.2f}] {category}\n"
-
-        # print(top_level_str)
-        print(output_str)
+            top_level_str += f"Spending [{total:.2f}] {category}\n"
+        
+        result = top_level_str + "\n" + output_str
+        write_to_file(result)
+        print(result)
+        print("\nCopy and paste the result to: https://sankeymatic.com/build/")
 
     except HttpError as err:
         print(err)
